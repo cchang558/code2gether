@@ -12,14 +12,13 @@ class Login : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.textView.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
+            val intent = Intent(this, CreateAccount::class.java)
             startActivity(intent)
         }
         binding.button.setOnClickListener {

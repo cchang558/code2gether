@@ -21,20 +21,20 @@ class CreateAccount : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.textView.setOnClickListener {
-            val intent = Intent(this, CreateAccount::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
 
         binding.button.setOnClickListener{
             val email = binding.emailText.text.toString()
             val password = binding.passwordText.text.toString()
-            val retypePassword = binding.retypePasswordText.toString()
+            val retypePassword = binding.retypePasswordText.text.toString()
 
             if(email.isNotEmpty() && password.isNotEmpty() && retypePassword.isNotEmpty()) {
                 if(password == retypePassword) {
                     firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                         if(it.isSuccessful) {
-                            val intent = Intent(this, CreateAccount::class.java)
+                            val intent = Intent(this, Login::class.java)
                             startActivity(intent)
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
